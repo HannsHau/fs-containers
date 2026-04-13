@@ -1,0 +1,81 @@
+[nodemon] starting `node ./bin/www`
+Connected to Redis
+[nodemon] restarting due to changes...
+[nodemon] starting `node ./bin/www`
+Connected to Redis
+GET / 200 6.037 ms - 131
+GET / 200 10.168 ms - 131
+^C
+hannshaustein@Air-von-Hanns todo-backend % REDIS_URL=redis://localhost:6379 MONGO_URL=mongodb://root:example@localhost:3456/the_database?authSource=admin npm run dev
+
+> todo-express-backend@0.0.0 dev
+> nodemon ./bin/www
+
+[nodemon] 3.1.14
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,cjs,json
+[nodemon] starting `node ./bin/www`
+Connected to Redis
+GET / 200 6.798 ms - 131
+GET / 200 9.766 ms - 131
+GET / 200 11.894 ms - 131
+^C
+hannshaustein@Air-von-Hanns todo-backend % clear 
+hannshaustein@Air-von-Hanns todo-backend % docker container ls
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                                           NAMES
+43bd1bc9dd9f   redis     "docker-entrypoint.s…"   19 minutes ago   Up 19 minutes   0.0.0.0:6379->6379/tcp, [::]:6379->6379/tcp     todo-backend-redis-1
+8f439d378041   mongo     "docker-entrypoint.s…"   4 hours ago      Up 19 minutes   0.0.0.0:3456->27017/tcp, [::]:3456->27017/tcp   todo-backend-mongo-1
+hannshaustein@Air-von-Hanns todo-backend % docker exec -it todo-backend-redis-1 bash
+root@43bd1bc9dd9f:/data# redis-cli
+127.0.0.1:6379> KEAY
+(error) ERR unknown command 'KEAY'
+127.0.0.1:6379> KEYS
+(error) ERR wrong number of arguments for 'keys' command
+127.0.0.1:6379> KEYS *
+1) "added_todos"
+127.0.0.1:6379> GET mykey "added_todos"
+(error) ERR wrong number of arguments for 'get' command
+127.0.0.1:6379> GET "added_todos"
+"8"
+127.0.0.1:6379> GET "added_todos"
+"11"
+127.0.0.1:6379> SET "added_todos" 9001
+OK
+127.0.0.1:6379> GET "added_todos"
+"9001"
+127.0.0.1:6379> GET "added_todos"
+"90022"
+127.0.0.1:6379> GET "added_todos"
+"90022"
+127.0.0.1:6379> KEYS
+(error) ERR wrong number of arguments for 'keys' command
+127.0.0.1:6379> KEYS *
+1) "added_todos"
+127.0.0.1:6379> KEYS *
+1) "visits"
+2) "added_todos"
+127.0.0.1:6379> GET "visits"
+"4"
+127.0.0.1:6379> SET "added_todos" 9001
+OK
+127.0.0.1:6379> GET "added_todos"
+"9001"
+127.0.0.1:6379> GET "added_todos"
+"9002"
+127.0.0.1:6379> 
+127.0.0.1:6379> DUMP visits
+"\x00\xc0\x04\r\x00\x7f\xbe\x96\x1b\xad\xcb\xd6e"
+127.0.0.1:6379> GET "visits"
+"5"
+127.0.0.1:6379> DEL visits
+(integer) 1
+127.0.0.1:6379> GET "visits"
+(nil)
+127.0.0.1:6379> DEL "added_todos"
+(integer) 1
+127.0.0.1:6379> GET "added_todos"
+(nil)
+127.0.0.1:6379> GET "added_todos"
+"1"
+127.0.0.1:6379> 

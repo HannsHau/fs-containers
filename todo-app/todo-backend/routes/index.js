@@ -7,11 +7,11 @@ const redis = require('../redis')
 /* GET index data. */
 router.get('/', async (req, res) => {
 
-  let visits = await redis.get("added_todos");
+  let visits = await redis.get("visits");
 
   visits++
 
-  await redis.set("added_todos", visits)
+  await redis.set("visits", visits)
 
   res.send({
     ...configs,
