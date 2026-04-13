@@ -17,3 +17,7 @@ The application has /todos crud which requires a MongoDB. Pass connection url wi
 # Redis
 
 Pass connection url with env `REDIS_URL`
+
+# Docker
+docker build -t todo-backend-server .
+docker run -p 3000:3000 todo-backend-server
