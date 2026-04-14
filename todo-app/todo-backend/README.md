@@ -7,7 +7,7 @@ Run with `npm start`
 Or in development mode with `npm run dev`
 
 Or start with local database (be carefull with a hard coded password)
-MONGO_URL=mongodb://root:example@localhost:3456/the_database?authSource=admin npm run dev
+REDIS_URL=redis://localhost:6379 MONGO_URL=mongodb://root:example@localhost:3456/the_database?authSource=admin npm run dev
 
 # Visit counter
 

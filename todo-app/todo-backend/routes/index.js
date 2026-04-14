@@ -15,7 +15,8 @@ router.get('/', async (req, res) => {
 
   res.send({
     ...configs,
-    visits
+    visits, 
+    fun: "yes!!!",
   });
 });
 
