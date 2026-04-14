@@ -9,3 +9,5 @@ todo-app/mongo_data/
 todo-app/test-results/
 todo-app/playwright-report/
 todo-app/playwright/.cache/
+todo-app/todo-frontend/redis_data/appendonlydir/appendonly.aof.1.incr.aof
+

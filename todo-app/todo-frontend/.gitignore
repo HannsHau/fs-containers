@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 
 redis_data/*
+redis_data/appendonlydir/*

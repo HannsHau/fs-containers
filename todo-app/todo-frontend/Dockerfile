@@ -12,9 +12,9 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-RUN npm ci
+ENV VITE_BACKEND_URL=http://localhost:8080/api
 
-ENV VITE_BACKEND_URL=http://localhost:3000/api
+RUN npm ci
 
 COPY --from=test /usr/src/app . 
 RUN npm run build
