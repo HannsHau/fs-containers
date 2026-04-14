@@ -18,3 +18,6 @@ VITE_BACKEND_URL=http://localhost:3000 npm run dev
 ## With Dockerfile
 docker build . -t todo-frontend
 docker run -p 8000:80 todo-frontend
+
+## Develop inside an container
+docker compose -f docker-compose.dev.yml up

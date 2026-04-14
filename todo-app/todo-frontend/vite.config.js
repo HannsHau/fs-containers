@@ -9,4 +9,7 @@ export default defineConfig({
     globals: true,
     setupFiles: [],
   },
+  server: {
+    allowedHosts: ["app", "localhost"],
+  },
 });
