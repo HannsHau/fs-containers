@@ -1,11 +1,20 @@
 services:
   app:
-    image: todo-frontend-devel
+    image: hello-front-d
     build:
       context: . # The context will pick this directory as the "build context"
       dockerfile: dev.Dockerfile # This will simply tell which dockerfile to read
     volumes:
       - ./:/usr/src/app # The path can be relative, so ./ is enough to say "the same location as the docker-compose.yml"
     ports:
-      - 3000:3000
-    container_name: todo-frontend-devel # This will name the container hello-front-dev
+      - 5173:5173
+    container_name: hello-front-d # This will name the container hello-front-dev
+  nginx:
+    image: nginx:1.29
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    container_name: reverse-proxy
+    depends_on:
+      - app
