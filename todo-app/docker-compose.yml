@@ -5,7 +5,7 @@ services:
       context: ./todo-frontend # The context will pick this directory as the "build context"
       dockerfile: Dockerfile # This will simply tell which dockerfile to read
       args:
-      - VITE_BACKEND_URL=${VITE_BACKEND_URL:-http://localhost:8080/api}
+      - VITE_BACKEND_URL=${VITE_BACKEND_URL:-/api}
        
     volumes:
       - ./todo-frontend/:/usr/src/app # The path can be relative, so ./ is enough to say "the same location as the docker-compose.yml"
