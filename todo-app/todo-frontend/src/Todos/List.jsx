@@ -13,7 +13,8 @@ const TodoList = ({ todos, deleteTodo, completeTodo }) => {
 
   return (
     <>
-      {todos
+      {Array.isArray(todos) ? (
+        todos
         .map((todo) => (
           <ToDo
             todo={todo}
@@ -21,7 +22,8 @@ const TodoList = ({ todos, deleteTodo, completeTodo }) => {
             onClickComplete={onClickComplete(todo)}
           />
         ))
-        .reduce((acc, cur) => [...acc, <hr />, cur], [])}
+        .reduce((acc, cur) => [...acc, <hr />, cur], [])
+      ) : null}
     </>
   );
 };
