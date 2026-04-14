@@ -21,7 +21,7 @@ services:
     image: redis
     command: ["redis-server", "--appendonly", "yes"] # Overwrite the CMD
     volumes: # Declare the volume
-      - ./todo-frontend/redis_data:/data
+      - ./todo-backend/redis_data:/data
 
   server:
     image: todo-backend

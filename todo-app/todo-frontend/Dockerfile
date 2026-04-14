@@ -12,7 +12,11 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-ENV VITE_BACKEND_URL=http://localhost:8080/api
+#ARG VITE_BACKEND_URL=http://nginx/api
+#ENV VITE_BACKEND_URL=${VITE_BACKEND_URL}
+#ENV VITE_BACKEND_URL=http://localhost:8080/api
+ARG VITE_BACKEND_URL=http://localhost:8080/api
+ENV VITE_BACKEND_URL=${VITE_BACKEND_URL}
 
 RUN npm ci
 
