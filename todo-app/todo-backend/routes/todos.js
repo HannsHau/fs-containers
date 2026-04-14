@@ -9,12 +9,6 @@ router.get('/', async (_, res) => {
   res.send(todos);
 });
 
-/* GET todos listing. */
-router.get('/statistics', async (_, res) => {
-  let added_todos = await redis.get("added_todos");
-  res.send({added_todos});
-});
-
 /* POST todo to listing. */
 router.post('/', async (req, res) => {
   const todo = await Todo.create({
@@ -54,7 +48,7 @@ singleRouter.put('/', async (req, res) => {
   const todo = await Todo.findByIdAndUpdate(req.todo.id, {
     text: req.body.text,
     done: req.body.done
-  });
+  }, {new: true });
   res.send(todo);
 });
 

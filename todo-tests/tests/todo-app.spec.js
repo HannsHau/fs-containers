@@ -103,7 +103,7 @@ test.describe('Backend API Tests', () => {
   test('PUT /api/todos/:id updates a todo', async ({ request }) => {
     // First create a todo
     const createResponse = await request.post('/api/todos', {
-      data: { text: 'Update test todo', done: false }
+      data: { text: 'Updated todo text', done: false }
     });
     const createdTodo = await createResponse.json();
     
