@@ -36,7 +36,7 @@ services:
     environment:
       - REDIS_URL=redis://redis:6379
       - MONGO_URL=mongodb://root:example@mongo:27017/the_database?authSource=admin
-    container_name: todo-backend # This will name the container hello-front-dev
+    container_name: todo-backend
   nginx:
     image: nginx:1.29
     volumes:

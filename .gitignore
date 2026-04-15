@@ -12,3 +12,4 @@ todo-app/todo-frontend/redis_data/appendonlydir/appendonly.aof.1.incr.aof
 
 todo-tests/playwright-report/data/*
 todo-tests/test-results/*
+todo-tests/playwright-report/index.html
