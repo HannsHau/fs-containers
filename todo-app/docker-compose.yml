@@ -20,6 +20,7 @@ services:
     volumes:
       - ./todo-backend/mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
       - mongo_data:/data/db
+  
   redis:
     image: redis
     command: ["redis-server", "--appendonly", "yes"] # Overwrite the CMD
@@ -37,6 +38,7 @@ services:
       - REDIS_URL=redis://redis:6379
       - MONGO_URL=mongodb://root:example@mongo:27017/the_database?authSource=admin
     container_name: todo-backend
+  
   nginx:
     image: nginx:1.29
     volumes:

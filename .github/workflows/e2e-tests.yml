@@ -31,12 +31,11 @@ jobs:
         run: docker compose up -d
 
       - name: Wait for services to be ready
-        run: |
-          echo "Waiting for nginx to be ready on port 8080..."
-          timeout 30 bash -c 'until curl -f http://localhost:8080 ; do sleep 2; done'
+        run: echo "Waiting for nginx to be ready on port 8080..."
+          timeout 30 bash -c 'until curl -f http://localhost:8080 > /dev/null 2>&1; do sleep 2; done'
 
-          echo "Wait for the todo-backend to respond"
-          timeout 30 bash -c 'until curl -f http://localhost:8080/api/statistics ; do sleep 2; done'
+          echo "Wait for the backend to respond"
+          timeout 30 bash -c 'until curl -f http://localhost:8080/api/statistics > /dev/null 2>&1; do sleep 2; done'
 
           echo "Services are ready!"
           
