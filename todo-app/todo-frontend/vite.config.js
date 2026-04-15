@@ -10,7 +10,6 @@ export default defineConfig({
     setupFiles: [],
   },
   server: {
-    allowedHosts: ["app", "localhost"],
-    port: 3000,
+    allowedHosts: ["app", "localhost", "nginx"],
   },
 });

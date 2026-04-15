@@ -10,15 +10,18 @@ RUN npm run test:ci
 FROM node:24 AS build-stage
 WORKDIR /usr/src/app
 
-COPY . .
+COPY --from=test /usr/src/app . 
 
 ARG VITE_BACKEND_URL=http://localhost:8080/api
 ENV VITE_BACKEND_URL=${VITE_BACKEND_URL}
 
 RUN npm ci
 
-COPY --from=test /usr/src/app . 
 RUN npm run build
+
+# RUN npm install -g serve
+# CMD ["serve", "-n", "dist"]
+
 
 # This is a new stage, everything before this is gone, except for the files that we want to COPY
 FROM nginx:1.29-alpine
