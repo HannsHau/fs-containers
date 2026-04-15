@@ -32,8 +32,6 @@ services:
     build:
       context: ./todo-backend # The context will pick this directory as the "build context"
       dockerfile: Dockerfile # This will simply tell which dockerfile to read
-    #volumes:
-    #  - ./todo-backend/:/usr/src/app # The path can be relative, so ./ is enough to say "the same location
     environment:
       - REDIS_URL=redis://redis:6379
       - MONGO_URL=mongodb://root:example@mongo:27017/the_database?authSource=admin
