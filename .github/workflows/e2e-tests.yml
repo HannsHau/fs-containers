@@ -35,7 +35,7 @@ jobs:
           echo "Waiting for nginx to be ready on port 8080..."
           timeout 30 bash -c 'until curl -f http://localhost:8080 > /dev/null 2>&1; do sleep 2; done'
 
-          eche "Wait for the backend to respond"
+          echo "Wait for the backend to respond"
           timeout 30 bash -c 'until curl -f http://localhost:8080/api/statistics > /dev/null 2>&1; do sleep 2; done'
 
           echo "Services are ready!"
